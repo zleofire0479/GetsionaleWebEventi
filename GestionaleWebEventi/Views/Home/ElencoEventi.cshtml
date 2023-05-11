@@ -1,9 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Elenco Eventi";
 }
+<h1>@ViewData["Title"]</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class=" textcenter">
+    @foreach (Evento a in Model)
+    {
+        <li>
+            
+            <a asp-controller="Home" asp-action="DettaglioEvento" asp-route-id="@a.ID"> @a.ID </a> -  @a.Titolo, @a.Luogo, @a.DataOra <br />
+        </li>
+    }
 </div>
 

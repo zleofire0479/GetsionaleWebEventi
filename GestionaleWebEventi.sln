@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionaleWebEventi", "GestionaleWebEventi\GestionaleWebEventi.csproj", "{DA2EDC18-01CA-4E16-9198-43CC786F725C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA2EDC18-01CA-4E16-9198-43CC786F725C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2EDC18-01CA-4E16-9198-43CC786F725C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA2EDC18-01CA-4E16-9198-43CC786F725C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2EDC18-01CA-4E16-9198-43CC786F725C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BEA7E2A8-0F01-4A2F-AEA2-3E807F765F9A}
+	EndGlobalSection
+EndGlobal

@@ -7,13 +7,12 @@ namespace GestionaleWebEventi.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    private Models.GetsioneDati gestioneDati;
+    private GestioneDati gestioneDati;
 
     public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
     {
         _logger = logger;
-        gestioneDati = new Models.GetsioneDati(configuration);
+        gestioneDati = new Models.GestioneDati(configuration);
     }
 
     public IActionResult Index()

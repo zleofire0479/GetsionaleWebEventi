@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Aggiungi evento";
+    var listaEventi = ViewData["listaeventi"] as IEnumerable<Evento>;
+    var listaRuoli = ViewData["listaruoli"] as IEnumerable<string>;
+    @model Evento;
+}
+<h1>@ViewData["Title"]</h1>
+
+<div asp-validation-summary="ModelOnly" class="error-text"></div>
+
+<form action="/Home/AggiungiEvento" method="post">
+    <div class="form-group mb-3">
+        <label asp-for="Titolo">Titolo</label>
+        <input asp-for="Titolo" value="@Model.Titolo" class="form-control" />
+        <span asp-validation-for="Titolo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="NomeRuoloAutorizzato">Ruolo autorizzato all'accesso</label>
+        <select asp-for="NomeRuoloAutorizzato"
+                asp-items="@(new SelectList(listaRuoli))"
+                class="form-control"></select>
+        <span asp-validation-for="NomeRuoloAutorizzato" class="text-danger"></span>
+    </div>
+
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Inserisci</button>
+    </div>
+
+</form>
+
+
+
+

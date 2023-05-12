@@ -10,7 +10,9 @@ namespace GestionaleWebEventi.Models
         public DateTime DataOra { get; set; }
         public string Luogo { get; set; }
         public int MaxUtenti { get; set; }
-        public Int64 PIazienda { get; set; }
-	}
+        public string PIazienda { get; set; }
+
+        public string NomeRuoloAutorizzato { get; set; }
+    }
 }
 

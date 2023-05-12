@@ -1,7 +1,21 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using GestionaleWebEventi.Filters;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Aggiungi Servizio Sessosessioni
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+});
+
+builder.Services.AddScoped<AdminFilter>();
+
+//Consente di accedere al contesto della applicazione
+//Soprattutto per trovare il dict della applicazione
+builder.Services.AddHttpContextAccessor();
+
 
 var app = builder.Build();
 
@@ -17,6 +31,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 

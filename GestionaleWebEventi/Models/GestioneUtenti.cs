@@ -26,16 +26,28 @@ namespace GestionaleWebEventi.Models
             return builder.ToString();
         }
 
-        public Utente CercaUtente(string n, string p)
+        public Utente CercaUtente(string email)
         {
-            string query = @"SELECT Utenti.*, Ruoli.Nome AS NomeRuolo FROM Utenti INNER JOIN Ruoli ON Ruoli.ID = Utenti.IDruoli WHERE Email = @Email AND Password = @Password";
+            string query = @"SELECT Utenti.*, Ruoli.Nome AS NomeRuolo FROM Utenti INNER JOIN Ruoli ON Ruoli.ID = Utenti.IDruolo WHERE Email = @email";
             using var con = new MySqlConnection(s);
             var param = new
             {
-                nome = n,
-                password = ComputeSha256(p)
+                email = email,
             };
             return con.Query<Utente>(query, param).SingleOrDefault();
+        }
+
+        public bool VerificaPassword(string email, string password)
+        {
+            password = ComputeSha256(password);
+            string query = @"SELECT Utenti.* FROM Utenti WHERE Email = @email AND Password = @password";
+            using var con = new MySqlConnection(s);
+            var param = new
+            {
+                email = email,
+                password = password
+            };
+            return con.Query<Utente>(query, param).Count() == 1;
         }
 
 

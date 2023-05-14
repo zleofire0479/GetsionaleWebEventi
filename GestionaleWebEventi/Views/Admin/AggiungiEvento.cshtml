@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Aggiungi evento";
+    ViewData["Title"] = "Crea evento";
     var listaEventi = ViewData["listaeventi"] as IEnumerable<Evento>;
     var listaRuoli = ViewData["listaruoli"] as IEnumerable<string>;
     @model Evento;
@@ -8,7 +8,7 @@
 
 <div asp-validation-summary="ModelOnly" class="error-text"></div>
 
-<form action="/Home/AggiungiEvento" method="post">
+<form action="/Admin/AggiungiEvento" method="post">
     <div class="form-group mb-3">
         <label asp-for="Titolo">Titolo</label>
         <input asp-for="Titolo" value="@Model.Titolo" class="form-control" />
@@ -16,16 +16,31 @@
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="NomeRuoloAutorizzato">Ruolo autorizzato all'accesso</label>
-        <select asp-for="NomeRuoloAutorizzato"
-                asp-items="@(new SelectList(listaRuoli))"
-                class="form-control"></select>
-        <span asp-validation-for="NomeRuoloAutorizzato" class="text-danger"></span>
+        <label asp-for="DataOra">Data e ora</label>
+        <input asp-for="DataOra" value="@Model.DataOra" class="form-control" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+        <span asp-validation-for="DataOra" class="text-danger"></span>
     </div>
 
+    <div class="form-group mb-3">
+        <label asp-for="Luogo">Luogo</label>
+        <input asp-for="Luogo" value="@Model.Luogo" class="form-control" />
+        <span asp-validation-for="Luogo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="MaxUtenti">Numero massimo di partecipanti</label>
+        <input asp-for="MaxUtenti" value="@Model.MaxUtenti" class="form-control" type="number" min="0" />
+        <span asp-validation-for="MaxUtenti" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="NomeRuoliAutorizzati">Ruol autorizzato all'accesso</label>
+        <select asp-for="NomeRuoliAutorizzati" asp-items="@(new MultiSelectList(listaRuoli))" class="form-control" multiple></select>
+        <span asp-validation-for="NomeRuoliAutorizzati" class="text-danger"></span>
+    </div>
 
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Inserisci</button>
+        <button type="submit" class="btn btn-primary">Crea Evento</button>
     </div>
 
 </form>

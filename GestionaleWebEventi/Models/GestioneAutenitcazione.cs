@@ -22,13 +22,24 @@ namespace GestionaleWebEventi.Models
 
         public string DammiCognomeUtente()
         {
-            string cognome = "Ospite";
-            string s = session.GetString("nomeCognome");
+            string cognome = "";
+            string s = session.GetString("cognomeUtente");
             if (s != null)
             {
                 cognome = s;
             }
             return cognome;
+        }
+
+        public string DammiEmailUtente()
+        {
+            string email = "";
+            string s = session.GetString("emailUtente");
+            if (s != null)
+            {
+                email = s;
+            }
+            return email;
         }
 
         public string DammiPIazienda()
@@ -56,6 +67,7 @@ namespace GestionaleWebEventi.Models
         public void ImpostaUtente(Utente u)
         {
             session.SetString("ruoloUtente", u.NomeRuolo);
+            session.SetString("email", u.Email);
             session.SetString("nomeUtente", u.Nome);
             session.SetString("cognomeUtente", u.Cognome);
             session.SetString("PIaziendaUtente", u.PIazienda);
@@ -64,6 +76,7 @@ namespace GestionaleWebEventi.Models
         public void Esci()
         {
             session.SetString("ruoloUtente", "Ospite");
+            session.SetString("email", "");
             session.SetString("nomeUtente", "Ospite");
             session.SetString("cognomeUtente", "");
             session.SetString("PIaziendaUtente", "");

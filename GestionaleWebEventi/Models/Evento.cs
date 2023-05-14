@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace GestionaleWebEventi.Models
 {
@@ -9,10 +10,11 @@ namespace GestionaleWebEventi.Models
 		public string Titolo { get; set; }
         public DateTime DataOra { get; set; }
         public string Luogo { get; set; }
+        //[DataType(DataType.)]
         public int MaxUtenti { get; set; }
-        public string PIazienda { get; set; }
+        public string PIazienda { get; set; } = "";
 
-        public string NomeRuoloAutorizzato { get; set; }
+        public IEnumerable<string> NomeRuoliAutorizzati { get; set; }
     }
 }
 

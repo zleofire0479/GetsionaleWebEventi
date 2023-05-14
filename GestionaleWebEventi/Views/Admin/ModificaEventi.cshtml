@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Modifica Eventi";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class=" textcenter">
+    @foreach (Evento a in Model)
+    {
+        <li>
+
+            <a asp-controller="Admin" asp-action="ModificaEventi" asp-route-id="@a.ID"> @a.ID </a> -  @a.Titolo, @a.Luogo, @a.DataOra <br />
+        </li>
+    }
+</div>
+
+

@@ -1,9 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var nome = ViewData["nome"] as string;
+    var cognome = ViewData["cognome"] as string;
+    var ruolo = ViewData["ruolo"] as string;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Benvenuto</h1>
+    <p>@nome @cognome - @ruolo</p>
 </div>
 

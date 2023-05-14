@@ -11,7 +11,7 @@ namespace GestionaleWebEventi.Models
         public int IDRuolo { get; set; }
         public string NomeRuolo { get; set; }
         public string PIazienda { get; set; }
-        public DateOnly DataNascita { get; set; }
+        public DateTime DataNascita { get; set; }
     }
 }
 

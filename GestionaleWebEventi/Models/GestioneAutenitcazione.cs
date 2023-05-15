@@ -9,6 +9,12 @@ namespace GestionaleWebEventi.Models
             session = sessione;
         }
 
+        public int DammiIdUtente()
+        {
+            int s = (int)session.GetInt32("idUtente");
+            return s;
+        }
+
         public string DammiNomeUtente()
         {
             string nome = "Ospite";
@@ -66,6 +72,7 @@ namespace GestionaleWebEventi.Models
 
         public void ImpostaUtente(Utente u)
         {
+            session.SetInt32("idUtente", u.ID);
             session.SetString("ruoloUtente", u.NomeRuolo);
             session.SetString("email", u.Email);
             session.SetString("nomeUtente", u.Nome);
@@ -75,6 +82,7 @@ namespace GestionaleWebEventi.Models
 
         public void Esci()
         {
+            session.SetInt32("idUtente", 0);
             session.SetString("ruoloUtente", "Ospite");
             session.SetString("email", "");
             session.SetString("nomeUtente", "Ospite");

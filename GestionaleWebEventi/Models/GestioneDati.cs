@@ -133,6 +133,34 @@ namespace GestionaleWebEventi.Models
             } catch (Exception ex) { return false; }
             
         }
+
+        public bool InserisciIscrizione(int idEvento, int idUtente)
+        {
+            try
+            {
+                using var con = new MySqlConnection(s);
+                var query = @"INSERT INTO Iscrizioni(IDevento, IDutente, Data) VALUES(@IDevento, @IDutente, @Data);";
+                var parm = new
+                {
+                    IDevento = idEvento,
+                    IDutente = idUtente,
+                    Data = DateTime.Now,
+                };
+                con.Execute(query, parm);
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1644) // Numero dell'errore restituito dal database nel caso in cui il trigger scatti
+                {
+                    return false;
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+        }
     }
 }
 

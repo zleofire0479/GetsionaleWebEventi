@@ -68,13 +68,20 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Iscriviti(int eventoId)
     {
-        // Logica per l'iscrizione all'evento
-        // Puoi utilizzare l'eventoId per identificare l'evento a cui l'utente si sta iscrivendo
-
-        return RedirectToAction("ConfermaIscrizione");
+        if (gestioneDati.InserisciIscrizione(eventoId, gestioneAutenticazione.DammiIdUtente())) {
+            return RedirectToAction("ConfermaIscrizione");
+        }
+        else {
+            return RedirectToAction("NumeroMassimoIscrizioniRaggiunto");
+        }
     }
 
     public IActionResult ConfermaIscrizione()
+    {
+        return View();
+    }
+
+    public IActionResult NumeroMassimoIscrizioniRaggiunto()
     {
         return View();
     }

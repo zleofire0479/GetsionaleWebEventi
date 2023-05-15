@@ -67,7 +67,30 @@ namespace GestionaleWebEventi.Controllers
             return View(evento);
         }
 
-        
+        public IActionResult ModificaEvento(int id)
+        {
+            Evento evento = gestioneDati.GetEvento(id);
+            return View(evento);
+        }
+
+        [HttpPost]
+        public IActionResult ModificaEvento(Evento evento)
+        {
+            evento.PIazienda = gestioneAutenticazione.DammiPIazienda();
+            if (!ModelState.IsValid)
+            {
+                return View(evento);
+            }
+
+            if (gestioneDati.ModificaEvento(evento))
+            {
+                return View("ConfermaModificaEvento");
+            }
+
+            ModelState.AddModelError("", "Errore di modifica: dati non validi o errore nel database");
+            return View(evento);
+        }
+
     }
 }
 

@@ -37,6 +37,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ElencoEventi">Lista Eventi</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="VisualizzaIscrizioni">Visualizza Iscrizioni</a>
+                        </li>
                         @if (Context.Items["ruoloUtente"].ToString() == "Admin")
                         {
                             <li class="nav-item">
@@ -52,7 +55,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Exit">Esci</a>
                             </li>
                         }
-                        
+
 
                     </ul>
                 </div>

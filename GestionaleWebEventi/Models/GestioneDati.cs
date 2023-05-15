@@ -114,6 +114,41 @@ namespace GestionaleWebEventi.Models
             return idInserito;
         }
 
+        public bool ModificaEvento(Evento evento)
+        {
+            using (MySqlConnection connection = new MySqlConnection(s))
+            {
+                connection.Open();
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = @"UPDATE Eventi SET Titolo = @Titolo, DataOra = @DataOra, Luogo = @Luogo, MaxUtenti = @MaxUtenti WHERE ID = @ID";
+                        var param = new
+                        {
+                            ID = evento.ID,
+                            Titolo = evento.Titolo,
+                            DataOra = evento.DataOra,
+                            Luogo = evento.Luogo,
+                            MaxUtenti = evento.MaxUtenti
+                        };
+
+                        int rowsAffected = connection.Execute(query, param, transaction);
+
+                        transaction.Commit();
+
+                        return rowsAffected > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
         public bool InserisciAutorizzazioni(int idEvento, string piAzienda, IEnumerable<string> listaRuoli) {
             try {
                 foreach (string ruolo in listaRuoli)
@@ -160,6 +195,17 @@ namespace GestionaleWebEventi.Models
                     throw ex;
                 }
             }
+        }
+
+        public IEnumerable<Evento> ListaEventiSottoiscritti(int idutente)
+        {
+            using var con = new MySqlConnection(s);
+            var query = @"select Eventi.* from Eventi inner join Iscrizioni on Eventi.ID = Iscrizioni.IDevento where Iscrizioni.IDutente = @idutente ORDER BY Eventi.DataOra ASC";
+            var parm = new
+            {
+                idutente
+            };
+            return con.Query<Evento>(query, parm);
         }
     }
 }

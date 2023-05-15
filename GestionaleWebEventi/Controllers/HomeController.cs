@@ -54,6 +54,12 @@ public class HomeController : Controller
         return View(listaEventi);
     }
 
+    public IActionResult VisualizzaIscrizioni()
+    {
+        var listaIscrizioni = gestioneDati.ListaEventiSottoiscritti(gestioneAutenticazione.DammiIdUtente());
+        return View(listaIscrizioni);
+    }
+
     public IActionResult DettaglioEvento(int id)
     {
         Evento evento = gestioneDati.GetEvento(id);

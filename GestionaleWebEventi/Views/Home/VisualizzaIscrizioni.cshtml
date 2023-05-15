@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Visualizza Iscrizioni";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class=" textcenter">
+    @foreach (Evento e in Model)
+    {
+        <li>
+            @e.Titolo, @e.Luogo, @e.DataOra <br />
+        </li>
+    }
+</div>
+

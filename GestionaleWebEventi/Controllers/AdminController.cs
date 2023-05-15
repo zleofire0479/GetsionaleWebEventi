@@ -39,7 +39,6 @@ namespace GestionaleWebEventi.Controllers
 
         public IActionResult AggiungiEvento()
         {
-            ViewData["listaEventi"] = gestioneDati.ListaEventi(gestioneAutenticazione.DammiRuoloUtente(), gestioneAutenticazione.DammiPIazienda());
             ViewData["listaruoli"] = gestioneDati.GetRuoli(gestioneAutenticazione.DammiPIazienda());
             Evento evento = new Evento();
             return View(evento);
@@ -51,7 +50,6 @@ namespace GestionaleWebEventi.Controllers
             evento.PIazienda = gestioneAutenticazione.DammiPIazienda();
             if (!ModelState.IsValid)
             {
-                ViewData["listaEventi"] = gestioneDati.ListaEventi(gestioneAutenticazione.DammiRuoloUtente(), gestioneAutenticazione.DammiPIazienda());
                 ViewData["listaruoli"] = gestioneDati.GetRuoli(gestioneAutenticazione.DammiPIazienda());
                 return View(evento);
             }
@@ -59,12 +57,11 @@ namespace GestionaleWebEventi.Controllers
             if (id != 0)
             {
                 if (gestioneDati.InserisciAutorizzazioni(id, gestioneAutenticazione.DammiPIazienda(), evento.NomeRuoliAutorizzati) ) {
-                    return RedirectToAction("ElencoEventi");
+                    return RedirectToAction("ModificaEventi");
                 }
                 ModelState.AddModelError("", "Errore creazione autorizzazioni");
                 return View(evento);
             }
-            ViewData["listaEventi"] = gestioneDati.ListaEventi(gestioneAutenticazione.DammiRuoloUtente(), gestioneAutenticazione.DammiPIazienda());
             ViewData["listaruoli"] = gestioneDati.GetRuoli(gestioneAutenticazione.DammiPIazienda());
             ModelState.AddModelError("", "Errore di inserimento: dati non validi o errore nel database");
             return View(evento);

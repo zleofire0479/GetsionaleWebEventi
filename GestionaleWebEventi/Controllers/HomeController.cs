@@ -25,7 +25,6 @@ public class HomeController : Controller
         httpContextAccessor.HttpContext.Items["cognomeUtente"] = gestioneAutenticazione.DammiCognomeUtente();
         httpContextAccessor.HttpContext.Items["emailUtente"] = gestioneAutenticazione.DammiEmailUtente();
         httpContextAccessor.HttpContext.Items["ruoloUtente"] = gestioneAutenticazione.DammiRuoloUtente();
-        httpContextAccessor.HttpContext.Items["ruoloUtente"] = gestioneAutenticazione.DammiRuoloUtente();
         httpContextAccessor.HttpContext.Items["PIaziendaUtente"] = gestioneAutenticazione.DammiPIazienda();
 
     }

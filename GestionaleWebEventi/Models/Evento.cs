@@ -11,7 +11,6 @@ namespace GestionaleWebEventi.Models
         [ValidazioneData(ErrorMessage = "La data deve essere successiva alla data attuale.")]
         public DateTime DataOra { get; set; }
         public string Luogo { get; set; }
-        //[DataType(DataType.)]
         public int MaxUtenti { get; set; }
         public string PIazienda { get; set; } = "";
         public IEnumerable<string> NomeRuoliAutorizzati { get; set; }

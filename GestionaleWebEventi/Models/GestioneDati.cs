@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using Dapper;
 using MySql.Data.MySqlClient;
 
@@ -15,25 +16,40 @@ namespace GestionaleWebEventi.Models
         public IEnumerable<Evento> ListaEventi(string piAzienda)
         {
             using var con = new MySqlConnection(s);
-            return con.Query<Evento>("select * from Eventi  where PIazienda = " + piAzienda);
+            var query = @"select Eventi.* from Eventi where PIazienda = @piAzienda ORDER BY Eventi.DataOra ASC";
+            var parm = new
+            {
+                piAzienda = piAzienda
+            };
+            return con.Query<Evento>(query, parm);
         }
 
         public IEnumerable<Evento> ListaEventi(string ruolo, string piAzienda)
         {
             using var con = new MySqlConnection(s);
-            return con.Query<Evento>("select Eventi.* from Eventi inner join Autorizzazioni on Eventi.ID = Autorizzazioni.IDevento where Autorizzazioni.IDruolo = " + GetIdRuolo(ruolo, piAzienda)); 
+            var query = @"select Eventi.* from Eventi inner join Autorizzazioni on Eventi.ID = Autorizzazioni.IDevento where Autorizzazioni.IDruolo = @idRuolo ORDER BY Eventi.DataOra ASC";
+            var parm = new
+            {
+                idRuolo = GetIdRuolo(ruolo, piAzienda)
+            };
+            return con.Query<Evento>(query, parm); 
         }
 
         public string GetRuolo(int IDruolo)
         {
             using var con = new MySqlConnection(s);
-            return con.Query<string>("select Nome from Ruoli where id = " + IDruolo).FirstOrDefault();
+            var query = @"select Nome from Ruoli where id = @id";
+            var parm = new
+            {
+                id = IDruolo
+            };
+            return con.Query<string>(query, parm).FirstOrDefault();
         }
 
         public IEnumerable<string> GetRuoli(string PIazienda)
         {
             using var con = new MySqlConnection(s);
-            var query = @"select Nome from Ruoli where PIazienda = @PI";
+            var query = @"select Nome from Ruoli where PIazienda = @PI ORDER BY Nome ASC";
             var parm = new
             {
                 PI = PIazienda

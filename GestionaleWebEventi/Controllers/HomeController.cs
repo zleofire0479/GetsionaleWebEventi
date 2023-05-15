@@ -54,6 +54,31 @@ public class HomeController : Controller
         return View(listaEventi);
     }
 
+    public IActionResult DettaglioEvento(int id)
+    {
+        Evento evento = gestioneDati.GetEvento(id);
+        if (evento == null)
+        {
+            return NotFound();      //TODO
+        }
+
+        return View(evento);
+    }
+
+    [HttpPost]
+    public IActionResult Iscriviti(int eventoId)
+    {
+        // Logica per l'iscrizione all'evento
+        // Puoi utilizzare l'eventoId per identificare l'evento a cui l'utente si sta iscrivendo
+
+        return RedirectToAction("ConfermaIscrizione");
+    }
+
+    public IActionResult ConfermaIscrizione()
+    {
+        return View();
+    }
+
     public IActionResult Login()
     {
         return View(new Utente());

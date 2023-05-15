@@ -13,6 +13,17 @@ namespace GestionaleWebEventi.Models
             s = configuration.GetConnectionString("DatabaseConnection");
         }
 
+        public Evento GetEvento(int id)
+        {
+            using var con = new MySqlConnection(s);
+            var query = @"select Eventi.* from Eventi where ID = @id";
+            var parm = new
+            {
+                id = id
+            };
+            return con.Query<Evento>(query, parm).FirstOrDefault();
+        }
+
         public IEnumerable<Evento> ListaEventi(string piAzienda)
         {
             using var con = new MySqlConnection(s);

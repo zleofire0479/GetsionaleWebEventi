@@ -39,7 +39,7 @@ namespace GestionaleWebEventi.Models
         }
 
 
-        public void InvioMail(string Mail)
+        public void InvioMail(string Mail, int idEvento)
         {
             using (MailMessage mail = new MailMessage("cdl.3ventorganaizer@gmail.com", Mail))
             using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))

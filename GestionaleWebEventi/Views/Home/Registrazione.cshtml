@@ -17,8 +17,14 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Ruolo">Ruolo</label>
-        <input asp-for="Ruolo" class="form-control" />
+        <label asp-for="DataNascita">Data di nascita</label>
+        <input asp-for="DataNascita" class="form-control" type="date" />
+        <span asp-validation-for="DataNascita" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="m-0 font-weight-bold text-primary" asp-for="Ruolo">Ruolo autorizzato all'accesso</label>
+        <select asp-for="Ruolo" asp-items="@(new SelectList(ViewBag.ListaRuoli as IEnumerable<string>) )" class="form-control"></select>
         <span asp-validation-for="Ruolo" class="text-danger"></span>
     </div>
 
@@ -38,9 +44,10 @@
         <label asp-for="ConfermaPassword">Conferma Password</label>
         <input asp-for="ConfermaPassword" class="form-control" />
         <span asp-validation-for="ConfermaPassword" class="text-danger"></span>
-        
+
     </div>
 
-    <button type="submit" class="btn btn-primary"></button>
+    <button type="submit" class="btn btn-primary">Registra</button>
+
 </form>
 

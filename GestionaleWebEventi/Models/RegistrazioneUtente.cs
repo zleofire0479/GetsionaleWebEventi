@@ -5,14 +5,9 @@ namespace GestionaleWebEventi.Models
 {
 	public class RegistrazioneUtente
 	{
-        [Required(ErrorMessage = "Dato obbligatorio")]
-        public string PIazienda { get; set; }
 
         [Required(ErrorMessage = "Dato obbligatorio")]
         public string Ruolo { get; set; }
-
-        [Required(ErrorMessage = "Dato obbligatorio")]
-        public string CF { get; set; }
 
         [Required(ErrorMessage = "Dato obbligatorio")]
         public string Nome { get; set; }

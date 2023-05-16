@@ -1,4 +1,5 @@
 footer.sticky-footer {
+  position: fixed;
   padding: 2rem 0;
   flex-shrink: 0;
   .copyright {
@@ -8,7 +9,8 @@ footer.sticky-footer {
 }
 
 body.sidebar-toggled {
-  footer.sticky-footer {
-    width: 100%;
-  }
+    footer.sticky-footer {
+        position: fixed;
+        width: 100%;
+    }
 }

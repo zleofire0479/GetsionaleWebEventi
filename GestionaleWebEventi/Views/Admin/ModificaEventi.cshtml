@@ -6,10 +6,36 @@
 <div class=" textcenter">
     @foreach (Evento a in Model)
     {
-        <li>
+        @*<li>
 
             <a asp-controller="Admin" asp-action="ModificaEvento" asp-route-id="@a.ID"> @a.ID </a> -  @a.Titolo, @a.Luogo, @a.DataOra <br />
-        </li>
+        </li>*@
+
+
+        <div class="card mb-4 py-3 border-left-primary">
+
+            <div class="card-body">
+
+                @*<a href="/Home/DettaglioEvento/@a.ID"> </a>*@
+                @*&nbsp;
+                    <a asp-controller="Home" asp-action="DettaglioEvento" asp-route-id="@a.ID"> @a.ID </a> -  , @a.Luogo, @a.DataOra <br />*@
+                <h2 class="m-0 font-weight-bold text-warning">  @a.Titolo</h2>
+                <hr class="sidebar-divider d-none d-md-block">
+                <h5 class="m-0 font-weight-bold text-primary">-  Data/Ora @a.DataOra</h5>
+                <h5 class="m-0 font-weight-bold text-primary">-  Luogo @a.Luogo</h5>
+                <h5 class="m-0 font-weight-bold text-primary">-  Codice evento: @a.ID</h5>
+                <h5>     </h5>
+
+            </div>
+
+            <a asp-controller="Admin" asp-action="ModificaEvento" asp-route-id="@a.ID" class="btn btn-info">
+                <span class="icon text-white-50">
+                    <i class="fas fa-flag"></i>
+                </span>
+                <span class="text"></span>
+            </a>
+
+        </div>
     }
 </div>
 

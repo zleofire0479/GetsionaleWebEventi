@@ -9,31 +9,31 @@
 
 <form action="/Admin/AggiungiEvento" method="post">
     <div class="form-group mb-3">
-        <label asp-for="Titolo">Titolo</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Titolo">Titolo</label>
         <input asp-for="Titolo" value="@Model.Titolo" class="form-control" />
         <span asp-validation-for="Titolo" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="DataOra">Data e ora</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="DataOra">Data e ora</label>
         <input asp-for="DataOra" value="@Model.DataOra" class="form-control" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" />
         <span asp-validation-for="DataOra" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="Luogo">Luogo</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Luogo">Luogo</label>
         <input asp-for="Luogo" value="@Model.Luogo" class="form-control" />
         <span asp-validation-for="Luogo" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="MaxUtenti">Numero massimo di partecipanti</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="MaxUtenti">Numero massimo di partecipanti</label>
         <input asp-for="MaxUtenti" value="@Model.MaxUtenti" class="form-control" type="number" min="0" />
         <span asp-validation-for="MaxUtenti" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="NomeRuoliAutorizzati">Ruol autorizzato all'accesso</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="NomeRuoliAutorizzati">Ruol autorizzato all'accesso</label>
         <select asp-for="NomeRuoliAutorizzati" asp-items="@(new MultiSelectList(listaRuoli))" class="form-control" multiple></select>
         <span asp-validation-for="NomeRuoliAutorizzati" class="text-danger"></span>
     </div>

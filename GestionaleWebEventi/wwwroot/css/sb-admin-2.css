@@ -11267,6 +11267,7 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
+  position: fixed;
   padding: 2rem 0;
   flex-shrink: 0;
 }

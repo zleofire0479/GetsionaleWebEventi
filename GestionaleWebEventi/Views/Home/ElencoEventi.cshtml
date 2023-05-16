@@ -8,17 +8,26 @@
     {
           <div class="card mb-4 py-3 border-left-primary">
 
-              <a href="/Home/DettaglioEvento/@a.ID" class="btn btn-info btn-icon-split" width="20">
-                  <span width="20" class="icon text-white-50">
-                      <i width="20" class="fas fa-info-circle"></i>
-                  </span>
-                  <span class="text">@a.ID</span>
-              </a>
 
-              <a href="/Home/DettaglioEvento/@a.ID"> </a>
-              &nbsp;
-              <a asp-controller="Home" asp-action="DettaglioEvento" asp-route-id="@a.ID"> @a.ID </a> -  , @a.Luogo, @a.DataOra <br />
-              <h3>@a.Titolo</h3>
+
+              @*<a href="/Home/DettaglioEvento/@a.ID"> </a>*@
+              @*&nbsp;
+        <a asp-controller="Home" asp-action="DettaglioEvento" asp-route-id="@a.ID"> @a.ID </a> -  , @a.Luogo, @a.DataOra <br />*@
+              <div class="card-body">
+                  <h2 class="m-0 font-weight-bold text-warning">  @a.Titolo</h2>
+                  <hr class="sidebar-divider d-none d-md-block">
+                  
+                  <h5 class="m-0 font-weight-bold text-primary">-  Data/Ora @a.DataOra</h5>
+                  <h5 class="m-0 font-weight-bold text-primary">-  Luogo @a.Luogo</h5>
+                  <h5 class="m-0 font-weight-bold text-primary">-  Codice evento: @a.ID</h5>
+                  <h5>     </h5>
+
+              </div>
+              <a href="/Home/DettaglioEvento/@a.ID" class="btn btn-info">
+                  <span class="icon text-white-50">
+                  </span>
+                  <span class="text"></span>
+              </a>
 
 
 

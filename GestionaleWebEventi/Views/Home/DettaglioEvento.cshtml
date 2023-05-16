@@ -6,14 +6,19 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    <h3>@Model.Titolo</h3>
-    <p>Luogo: @Model.Luogo</p>
-    <p>Data e ora: @Model.DataOra</p>
+    <h3 class="m-0 font-weight-bold text-warning">@Model.Titolo</h3>
+    <hr class="sidebar-divider d-none d-md-block">
+    <h5 class="m-0 font-weight-bold text-primary">Data/Ora @Model.DataOra</h5>
+    <h5 class="m-0 font-weight-bold text-primary">Luogo @Model.Luogo</h5>
+    <h5 class="m-0 font-weight-bold text-primary">Codice evento: @Model.ID</h5>
+    <h5 class="m-0 font-weight-bold text-primary">Codice evento: @Model.MaxUtenti</h5>
+    <h5>     </h5>
+
 
     <!-- Bottone per l'iscrizione -->
     <form action="/Home/Iscriviti" method="post">
         <input type="hidden" name="eventoId" value="@Model.ID" />
-        <button type="submit">Iscriviti</button>
+        <button class="btn btn-primary" type="submit">Iscriviti</button>
     </form>
 </div>
 

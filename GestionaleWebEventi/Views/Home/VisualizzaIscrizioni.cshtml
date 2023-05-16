@@ -6,17 +6,35 @@
 <div class="text-center">
     @foreach (Evento e in Model)
     {
-        <div class="card mb-3">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h2 class="m-0 font-weight-bold text-warning">@e.Titolo</h2>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">@e.Titolo</h5>
-                <p class="card-text">Luogo: @e.Luogo</p>
-                <p class="card-text">Data e Ora: @e.DataOra</p>
-                
-                    <a asp-controller="Home" asp-action="AnnullaIscrizione" asp-route-id="@e.ID">Annulla Iscrizione</a>
-                
+                <p>
+                    <h5 class="m-0 font-weight-bold text-primary">Data/Ora @e.DataOra</h5>
+                    <h5 class="m-0 font-weight-bold text-primary">Luogo @e.Luogo</h5>
+                    <h5 class="m-0 font-weight-bold text-primary">Codice evento: @e.ID</h5>
+                </p>
+
+                <a class="btn btn-danger" asp-controller="Home" asp-action="AnnullaIscrizione" asp-route-id="@e.ID">Annulla Iscrizione</a>
+
             </div>
         </div>
-    }
-</div>
+
+
+            @*<div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">@e.Titolo</h5>
+                    <p class="card-text">Luogo: @e.Luogo</p>
+                    <p class="card-text">Data e Ora: @e.DataOra</p>
+
+                    <a asp-controller="Home" asp-action="AnnullaIscrizione" asp-route-id="@e.ID">Annulla Iscrizione</a>
+
+                </div>
+            </div>*@
+     }
+   </div>
 
 

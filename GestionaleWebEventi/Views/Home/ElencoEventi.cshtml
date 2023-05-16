@@ -7,7 +7,7 @@
     @foreach (Evento a in Model)
     {
         <li>
-            <a href="/Home/DettaglioEvento/@a.ID"> @a.ID </a>
+            <a href="/Home/DettaglioEvento/@a.ID"> </a>
             &nbsp;
             <a asp-controller="Home" asp-action="DettaglioEvento" asp-route-id="@a.ID"> @a.ID </a> -  @a.Titolo, @a.Luogo, @a.DataOra <br />
         </li>

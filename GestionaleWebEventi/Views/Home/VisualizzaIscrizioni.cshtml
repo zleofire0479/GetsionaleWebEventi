@@ -3,12 +3,20 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<div class=" textcenter">
+<div class="text-center">
     @foreach (Evento e in Model)
     {
-        <li>
-            @e.Titolo, @e.Luogo, @e.DataOra <br />
-        </li>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@e.Titolo</h5>
+                <p class="card-text">Luogo: @e.Luogo</p>
+                <p class="card-text">Data e Ora: @e.DataOra</p>
+                
+                    <a asp-controller="Home" asp-action="AnnullaIscrizione" asp-route-id="@e.ID">Annulla Iscrizione</a>
+                
+            </div>
+        </div>
     }
 </div>
+
 

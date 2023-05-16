@@ -87,6 +87,26 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult AnnullaIscrizione(int id)
+    {
+        var idUtente = gestioneAutenticazione.DammiIdUtente();
+        if (idUtente != 0) {
+            var idIscrizione = gestioneDati.GetIdIscrizione(id, idUtente);
+            if (gestioneDati.AnnullaIscrizione(idIscrizione))
+            {
+                return View(idIscrizione);
+            }
+            else
+            {
+                return View("ErroreAnnullamentoIscrizione");
+            }
+        } else {
+            return View("Login");
+        }
+        
+    }
+
+
     public IActionResult NumeroMassimoIscrizioniRaggiunto()
     {
         return View();
@@ -123,6 +143,8 @@ public class HomeController : Controller
                 return View(id);
             }
         }
+
+
     }
 }
 

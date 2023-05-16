@@ -1,10 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Conferma Iscrizione";
+﻿@model int
+
+@{
+    ViewData["Title"] = "Conferma Annullamento Iscrizione";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<p>Grazie per esserti iscritto all'evento!</p>
-<p>La tua iscrizione è stata confermata con successo.</p>
+<p>Sei sicuro di voler annullare l'iscrizione?</p>
+
+<form action="AnnullaIscrizione" method="post">
+    <input type="hidden" name="id" value="@Model" />
+    <button type="submit" class="btn btn-danger">Annulla Iscrizione</button>
+    <a href="VisualizzaIscrizioni" class="btn btn-primary">Torna all'elenco delle iscrizioni</a>
+</form>
 
 

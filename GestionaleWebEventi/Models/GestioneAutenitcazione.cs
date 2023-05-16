@@ -11,8 +11,13 @@ namespace GestionaleWebEventi.Models
 
         public int DammiIdUtente()
         {
-            int s = (int)session.GetInt32("idUtente");
-            return s;
+            int id = 0;
+            var s = session.GetInt32("idUtente");
+            if (s != null)
+            {
+                id = (int)s;
+            }
+            return id;
         }
 
         public string DammiNomeUtente()

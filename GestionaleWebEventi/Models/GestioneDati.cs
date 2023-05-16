@@ -24,6 +24,18 @@ namespace GestionaleWebEventi.Models
             return con.Query<Evento>(query, parm).FirstOrDefault();
         }
 
+        public int GetIdIscrizione(int idEvento, int idUtente)
+        {
+            using var con = new MySqlConnection(s);
+            var query = @"select ID from Iscrizioni where IDevento = @idevento AND IDutente = @idutente";
+            var parm = new
+            {
+                IDevento = idEvento,
+                IDutente = idUtente
+            };
+            return con.Query<int>(query, parm).FirstOrDefault();
+        }
+
         public IEnumerable<Evento> ListaEventi(string piAzienda)
         {
             using var con = new MySqlConnection(s);
@@ -194,6 +206,25 @@ namespace GestionaleWebEventi.Models
                 {
                     throw ex;
                 }
+            }
+        }
+
+        public bool AnnullaIscrizione(int idIscrizione)
+        {
+            try
+            {
+                using var con = new MySqlConnection(s);
+                var query = @"DELETE FROM Iscrizioni WHERE ID = @IDiscrizione;";
+                var parm = new
+                {
+                    IDiscrizione = idIscrizione
+                };
+                con.Execute(query, parm);
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                return false;
             }
         }
 

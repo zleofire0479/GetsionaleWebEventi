@@ -1,17 +1,17 @@
 ﻿@model int
 
 @{
-    ViewData["Title"] = "Conferma Annullamento Iscrizione";
+    ViewData["Title"] = "Conferma Iscrizione";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<p>Sei sicuro di voler annullare l'iscrizione?</p>
+<p>Sei sicuro di iscriverti?</p>
 
-<form action="AnnullaIscrizione" method="post">
+<form action="VisualizzaIscrizioni" method="post">
     <input type="hidden" name="id" value="@Model" />
-    <button type="submit" class="btn btn-danger">Annulla Iscrizione</button>
-    <a href="VisualizzaIscrizioni" class="btn btn-primary">Torna all'elenco delle iscrizioni</a>
+    <button type="submit" class="btn btn-primary">Iscriviti</button>
+    <a href="VisualizzaIscrizioni" class=" btn btn-danger">Torna all'elenco delle iscrizioni</a>
 </form>
 
 

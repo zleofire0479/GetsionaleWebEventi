@@ -7,18 +7,20 @@
 <div asp-validation-summary="ModelOnly" class="error-text"></div>
 <form action="/Home/Login" method="post">
     <div class="form-group mb-3">
-        <label asp-for="Email">Email</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Email">Email</label>
         <input asp-for="Email" value="@Model.Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="form-group mb-3">
-        <label asp-for="Password">Password</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Password">Password</label>
         <input type="password" asp-for="Password" value="@Model.Password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="text-center">
         <button type="submit" class="btn btn-primary">Entra</button>
     </div>
+
+    <p><center><img class="rounded-circle" src="/img/Logo CDL Event Organizer.jpg" width="170" height="170"></center></p>
 
 </form>
 

@@ -250,7 +250,7 @@ namespace GestionaleWebEventi.Models
             int numeroIscrizioni = 0;
             using (var con = new MySqlConnection(s))
             {
-                var query = "SELECT COUNT(*) FROM Iscrizioni WHERE IDutente = @IDutente";
+                var query = @"SELECT COUNT(*) FROM Iscrizioni WHERE IDutente = @IDutente";
                 var parameters = new { IDutente = idUtente };
 
                 numeroIscrizioni = con.ExecuteScalar<int>(query, parameters);

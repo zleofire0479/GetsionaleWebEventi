@@ -5,19 +5,19 @@
 <form asp-action="Registrazione" method="post">
     <input type="hidden" name="Parametro" value="@ViewBag.Parametro" />
     <div class="form-group">
-        <label asp-for="Nome">Nome</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Nome">Nome</label>
         <input asp-for="Nome" class="form-control" />
         <span asp-validation-for="Nome" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Cognome">Cognome</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Cognome">Cognome</label>
         <input asp-for="Cognome" class="form-control" />
         <span asp-validation-for="Cognome" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="DataNascita">Data di nascita</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="DataNascita">Data di nascita</label>
         <input asp-for="DataNascita" class="form-control" type="date" />
         <span asp-validation-for="DataNascita" class="text-danger"></span>
     </div>
@@ -29,25 +29,27 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Email">Email</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Email">Email</label>
         <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Password">Password</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="Password">Password</label>
         <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="ConfermaPassword">Conferma Password</label>
+        <label class="m-0 font-weight-bold text-primary" asp-for="ConfermaPassword">Conferma Password</label>
         <input asp-for="ConfermaPassword" class="form-control" />
         <span asp-validation-for="ConfermaPassword" class="text-danger"></span>
 
     </div>
 
-    <button type="submit" class="btn btn-primary">Registra</button>
+    <div class="text-center">
+        <button type="submit" class="btn btn-success">Registra</button>
+    </div>
 
 </form>
 

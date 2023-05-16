@@ -6,6 +6,9 @@
 
 <div asp-validation-summary="ModelOnly" class="error-text"></div>
 <form action="/Home/Login" method="post">
+
+    <p><center><img class="rounded-circle" src="/img/Logo CDL Event Organizer.jpg" width="170" height="170"></center></p>
+
     <div class="form-group mb-3">
         <label class="m-0 font-weight-bold text-primary" asp-for="Email">Email</label>
         <input asp-for="Email" value="@Model.Email" class="form-control" />
@@ -20,7 +23,7 @@
         <button type="submit" class="btn btn-primary">Entra</button>
     </div>
 
-    <p><center><img class="rounded-circle" src="/img/Logo CDL Event Organizer.jpg" width="170" height="170"></center></p>
+
 
 </form>
 

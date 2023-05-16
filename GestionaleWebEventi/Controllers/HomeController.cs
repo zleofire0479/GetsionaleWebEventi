@@ -34,6 +34,8 @@ public class HomeController : Controller
         ViewData["nome"] = gestioneAutenticazione.DammiNomeUtente();
         ViewData["cognome"] = gestioneAutenticazione.DammiCognomeUtente();
         ViewData["ruolo"] = gestioneAutenticazione.DammiRuoloUtente();
+        ViewData["NumIscrizioni"] = gestioneDati.GetNumeroIscrizioniUtente(gestioneAutenticazione.DammiIdUtente());
+        ViewData["NumEventi"] = gestioneDati.GetNumEventi(gestioneAutenticazione.DammiRuoloUtente(), gestioneAutenticazione.DammiPIazienda());
         return View();
     }
 

@@ -159,7 +159,7 @@ public class HomeController : Controller
     public IActionResult Iscriviti(int eventoId)
     {
         if (gestioneDati.InserisciIscrizione(eventoId, gestioneAutenticazione.DammiIdUtente())) {
-            gestioneUtenti.InvioMail(gestioneAutenticazione.DammiEmailUtente(), eventoId);
+            gestioneUtenti.InvioMail(gestioneAutenticazione.DammiEmailUtente(), gestioneDati.GetEvento(eventoId), gestioneAutenticazione.DammiNomeUtente() + " " + gestioneAutenticazione.DammiCognomeUtente());
             return RedirectToAction("ConfermaIscrizione");
         }
         else {

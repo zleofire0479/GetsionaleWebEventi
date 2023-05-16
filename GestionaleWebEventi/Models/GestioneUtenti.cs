@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using System.Text;
 using Dapper;
+using System.Net.Mail;
 
 namespace GestionaleWebEventi.Models
 {
@@ -14,7 +15,7 @@ namespace GestionaleWebEventi.Models
             s = configuration.GetConnectionString("DatabaseConnection");
         }
 
-        private string ComputeSha256(string s)
+        public string ComputeSha256(string s)
         {
             using SHA256 sha = SHA256.Create();
             byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(s));
@@ -35,6 +36,28 @@ namespace GestionaleWebEventi.Models
                 email = email,
             };
             return con.Query<Utente>(query, param).SingleOrDefault();
+        }
+
+
+        public void InvioMail(string Mail)
+        {
+            using (MailMessage mail = new MailMessage("cdl.3ventorganaizer@gmail.com", Mail))
+            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+            {
+                mail.Subject = "Conferma Iscrizione";
+                mail.Body =
+                    "<div class=\"form - group mb - 3\">" +
+                    "<h1><strong>Grazie per esserti iscritto a questo evento!</strong></h1>" +
+                    "<p><h3>Questa Email è una mail di conferma!</h3>" +
+                    "</div>"
+                    ;
+                mail.IsBodyHtml = true;
+
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("cdl.3ventorganaizer@gmail.com", "xqbizazaowqpyggw\n");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
         }
 
         public bool VerificaPassword(string email, string password)

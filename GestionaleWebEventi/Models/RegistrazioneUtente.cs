@@ -21,7 +21,7 @@ namespace GestionaleWebEventi.Models
         public string Cognome { get; set; }
 
         [Required(ErrorMessage = "Dato Obbligatorio")]
-        public DateOnly DataNascita { get; set; }
+        public DateTime DataNascita { get; set; }
 
         [Required(ErrorMessage = "Dato obbligatorio")]
         public string Email { get; set; }

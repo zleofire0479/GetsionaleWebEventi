@@ -27,14 +27,8 @@ namespace GestionaleWebEventi.Controllers
             httpContextAccessor.HttpContext.Items["cognomeUtente"] = gestioneAutenticazione.DammiCognomeUtente();
             httpContextAccessor.HttpContext.Items["emailUtente"] = gestioneAutenticazione.DammiEmailUtente();
             httpContextAccessor.HttpContext.Items["ruoloUtente"] = gestioneAutenticazione.DammiRuoloUtente();
-            httpContextAccessor.HttpContext.Items["ruoloUtente"] = gestioneAutenticazione.DammiRuoloUtente();
             httpContextAccessor.HttpContext.Items["PIaziendaUtente"] = gestioneAutenticazione.DammiPIazienda();
-        }
-
-        public IActionResult ModificaEventi()
-        {
-            var listaEventi = gestioneDati.ListaEventi(gestioneAutenticazione.DammiPIazienda());
-            return View(listaEventi);
+            httpContextAccessor.HttpContext.Items["idUtente"] = gestioneAutenticazione.DammiIdUtente();
         }
 
         public IActionResult AggiungiEvento()
@@ -65,6 +59,13 @@ namespace GestionaleWebEventi.Controllers
             ViewData["listaruoli"] = gestioneDati.GetRuoli(gestioneAutenticazione.DammiPIazienda());
             ModelState.AddModelError("", "Errore di inserimento: dati non validi o errore nel database");
             return View(evento);
+        }
+
+
+        public IActionResult ModificaEventi()
+        {
+            var listaEventi = gestioneDati.ListaEventi(gestioneAutenticazione.DammiPIazienda());
+            return View(listaEventi);
         }
 
         public IActionResult ModificaEvento(int id)

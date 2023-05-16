@@ -16,7 +16,6 @@ builder.Services.AddScoped<AdminFilter>();
 //Soprattutto per trovare il dict della applicazione
 builder.Services.AddHttpContextAccessor();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

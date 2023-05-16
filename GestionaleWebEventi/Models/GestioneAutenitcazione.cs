@@ -79,7 +79,7 @@ namespace GestionaleWebEventi.Models
         {
             session.SetInt32("idUtente", u.ID);
             session.SetString("ruoloUtente", u.NomeRuolo);
-            session.SetString("email", u.Email);
+            session.SetString("emailUtente", u.Email);
             session.SetString("nomeUtente", u.Nome);
             session.SetString("cognomeUtente", u.Cognome);
             session.SetString("PIaziendaUtente", u.PIazienda);
@@ -89,7 +89,7 @@ namespace GestionaleWebEventi.Models
         {
             session.SetInt32("idUtente", 0);
             session.SetString("ruoloUtente", "Ospite");
-            session.SetString("email", "");
+            session.SetString("emailUtente", "");
             session.SetString("nomeUtente", "Ospite");
             session.SetString("cognomeUtente", "");
             session.SetString("PIaziendaUtente", "");

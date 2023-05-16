@@ -269,6 +269,45 @@ namespace GestionaleWebEventi.Models
             };
             return con.Query<Evento>(query, parm);
         }
+
+        public int InserisciUtente(Utente utente)
+        {
+            try
+            {
+                using (var con = new MySqlConnection(s))
+                {
+                    con.Open();
+                    using (var transaction = con.BeginTransaction())
+                    {
+                        var query = @"INSERT INTO Utenti(Nome, Cognome, DataNascita, IDruolo, Email, Password, PIazienda) 
+                                VALUES(@Nome, @Cognome, @DataNascita, @IDruolo, @Email, @Password, @PIazienda);
+                                SELECT LAST_INSERT_ID()";
+                        var param = new
+                        {
+                            Nome = utente.Nome,
+                            Cognome = utente.Cognome,
+                            DataNascita = utente.DataNascita,
+                            IDruolo = utente.IDRuolo,
+                            Email = utente.Email,
+                            Password = utente.Password,
+                            PIazienda = utente.PIazienda
+                        };
+
+                        int idUtente = con.ExecuteScalar<int>(query, param, transaction);
+                        transaction.Commit();
+
+                        return idUtente;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0; 
+            }
+        }
+
+
+
     }
 }
 

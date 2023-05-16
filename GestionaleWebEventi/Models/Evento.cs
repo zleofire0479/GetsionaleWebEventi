@@ -13,6 +13,7 @@ namespace GestionaleWebEventi.Models
         public string Luogo { get; set; }
         public int MaxUtenti { get; set; }
         public string PIazienda { get; set; } = "";
+
         public IEnumerable<string> NomeRuoliAutorizzati { get; set; } = new List<string>();
     }
 }

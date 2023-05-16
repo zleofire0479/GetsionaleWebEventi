@@ -58,6 +58,23 @@ namespace GestionaleWebEventi.Models
             return con.Query<Evento>(query, parm); 
         }
 
+        public int GetNumEventi(string ruolo, string piAzienda)
+        {
+            int count = 0;
+            using (var con = new MySqlConnection(s))
+            {
+                var query = @"SELECT COUNT(*) FROM Eventi INNER JOIN Autorizzazioni ON Eventi.ID = Autorizzazioni.IDevento WHERE Autorizzazioni.IDruolo = @idRuolo";
+                var parameters = new
+                {
+                    idRuolo = GetIdRuolo(ruolo, piAzienda)
+                };
+
+                count = con.ExecuteScalar<int>(query, parameters);
+            }
+            return count;
+        }
+
+
         public string GetRuolo(int IDruolo)
         {
             using var con = new MySqlConnection(s);
@@ -227,6 +244,20 @@ namespace GestionaleWebEventi.Models
                 return false;
             }
         }
+
+        public int GetNumeroIscrizioniUtente(int idUtente)
+        {
+            int numeroIscrizioni = 0;
+            using (var con = new MySqlConnection(s))
+            {
+                var query = "SELECT COUNT(*) FROM Iscrizioni WHERE IDutente = @IDutente";
+                var parameters = new { IDutente = idUtente };
+
+                numeroIscrizioni = con.ExecuteScalar<int>(query, parameters);
+            }
+            return numeroIscrizioni;
+        }
+
 
         public IEnumerable<Evento> ListaEventiSottoiscritti(int idutente)
         {

@@ -52,13 +52,20 @@ public class HomeController : Controller
 
     public IActionResult Registrazione(string id)
     {
-        ViewBag.Parametro = Convert.ToInt32(id);
+        ViewBag.Parametro = id;
+        var listaRuoli = gestioneDati.GetRuoli(id).ToList();
+        listaRuoli.Remove("Admin");
+        ViewBag.ListaRuoli = listaRuoli;
         return View();
     }
-
+    //https://localhost:7126/Home/Registrazione/873286723
     [HttpPost]
     public IActionResult Registrazione(RegistrazioneUtente model, string Parametro)
     {
+        ViewBag.Parametro = Parametro;
+        var listaRuoli = gestioneDati.GetRuoli(Parametro).ToList();
+        listaRuoli.Remove("Admin");
+        ViewBag.ListaRuoli = listaRuoli;
         if (ModelState.IsValid)
         {
             Utente nuovo = new Utente()
@@ -68,6 +75,7 @@ public class HomeController : Controller
                 Cognome = model.Cognome,
                 Password = gestioneUtenti.ComputeSha256(model.Password),
                 IDRuolo = gestioneDati.GetIdRuolo(model.Ruolo, Parametro),
+                NomeRuolo = model.Ruolo,
                 PIazienda = Parametro,
                 DataNascita = model.DataNascita
             };
@@ -151,7 +159,7 @@ public class HomeController : Controller
     public IActionResult Iscriviti(int eventoId)
     {
         if (gestioneDati.InserisciIscrizione(eventoId, gestioneAutenticazione.DammiIdUtente())) {
-            gestioneUtenti.InvioMail(gestioneAutenticazione.DammiEmailUtente());
+            gestioneUtenti.InvioMail(gestioneAutenticazione.DammiEmailUtente(), int eventoId);
             return RedirectToAction("ConfermaIscrizione");
         }
         else {

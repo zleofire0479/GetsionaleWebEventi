@@ -10,7 +10,14 @@
 
 <div class="text-center">
     <h1 class="display-4">Benvenuto</h1>
-    <p>@nome @cognome - @ruolo</p>
+    @if (nome == "Ospite")
+    {
+        <p>Per visualizzare la Dashboard devi effetuare il <a class="collapse-item" asp-area="" asp-controller="Home" asp-action="Login">Login</a></p>
+    }
+    else
+    {
+        <p>@nome @cognome - @ruolo</p>
+    }
 </div>
 
 

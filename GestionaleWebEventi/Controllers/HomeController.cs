@@ -143,7 +143,7 @@ public class HomeController : Controller
         Evento evento = gestioneDati.GetEvento(id);
         if (evento == null)
         {
-            return NotFound();      //TODO
+            return NotFound();      
         }
 
         return View(evento);
